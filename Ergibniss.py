@@ -16,7 +16,7 @@ timeout = time.time()
 def get_homepage():
     """Einlogen und Prüfungsverwaltung aufnehmen"""
 # Geben Sie die Informationen des "Form", Kundenname&Passport(asdf:"KundenName", fdsa:"Passport")
-    kun_info = {'asdf': '***', 'fdsa': '*****'}  
+    kun_info = {'asdf': 'zhou', 'fdsa': 'H.678aya'}
     login_url = 'https://qisserver.hs-koblenz.de/qisserver/rds?state=user&type=1&category=auth.login&startpage=portal.vm&breadCrumbSource=portal'
     r = session.post(login_url, data=kun_info)
 
@@ -27,7 +27,7 @@ def get_homepage():
 
 
 def get_nsf_url():
-    """Prüfungsan- und -abmeldung & Info über angemeldete Prüfungen & 
+    """Prüfungsan- und -abmeldung & Info über angemeldete Prüfungen &
     Notenspiegel"""
 
     soup = BeautifulSoup(html_home.text, features='lxml')
@@ -46,7 +46,7 @@ def get_nt_url():
     soup = BeautifulSoup(html_nsf.text, features='lxml')
     #  Noteseite
     nt_urls = soup.find_all("a",
-                            {'title': re.compile('Leistung*')})  
+                            {'title': re.compile('Leistung*')})
     for i in nt_urls:
         nt_url = i['href']
     return nt_url
@@ -75,7 +75,7 @@ while True:
         cells = []
         for td in trs.find_all("td"):
             cells.append(td.text.strip())
-# Die Zeilen von 7000&8000&Titel haben nur 8 Elementen, aber die Zeilen, die wir brauchen, 9 Element haben. 
+# Die Zeilen von 7000&8000&Titel haben nur 8 Elementen, aber die Zeilen, die wir brauchen, 9 Element haben.
 # Zwar man koennte mit Regulaeren Aussruck verteilen, aber das ist Schwer fuer mich. Naechste Mal probiere ich.
         if len(cells) > 8:
             rows.append(cells)
