@@ -16,7 +16,7 @@ timeout = time.time()
 def get_homepage():
     """Einlogen und Prüfungsverwaltung aufnehmen"""
 # Geben Sie die Informationen des "Form", Kundenname&Passport(asdf:"KundenName", fdsa:"Passport")
-    kun_info = {'asdf': 'zhou', 'fdsa': 'H.678aya'}
+    kun_info = {'asdf': 'username', 'fdsa': 'Password'}
     login_url = 'https://qisserver.hs-koblenz.de/qisserver/rds?state=user&type=1&category=auth.login&startpage=portal.vm&breadCrumbSource=portal'
     r = session.post(login_url, data=kun_info)
 
